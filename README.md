@@ -7,9 +7,9 @@ Aqui temos uma api de playlist musical. O objetivo é que o usuário possa ver s
 
 # Tecnologias
 
-´´´Django, Django Rest Framework, Sqlite.´´´
+``` Django, Django Rest Framework, Sqlite. ```
 
-# PARA CLONAR O REPOSITÓRIO:
+# Para clonar o repositório:
 
 use o comando 
 
