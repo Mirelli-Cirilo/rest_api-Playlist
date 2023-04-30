@@ -4,6 +4,6 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('musics/', views.listMusics),
-    path('music/<int:id>/', views.musicDetail)
+    path('musics/', views.MusicListGeneric.as_view()),
+    path('music/<int:pk>/', views.MusicDetailGeneric.as_view())
 ]
