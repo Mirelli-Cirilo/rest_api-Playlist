@@ -1,12 +1,15 @@
 from .models import Music
 from .serializers import MusicSerializer
 
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework import viewsets, mixins
+from rest_framework.viewsets import ModelViewSet, GenericViewSet
 
-class MusicListGeneric(ListCreateAPIView):
-    queryset = Music.objects.all()   
+
+class MusicViewSet(viewsets.ModelViewSet):
+    queryset = Music.objects.all()
     serializer_class = MusicSerializer
 
-class MusicDetailGeneric(RetrieveUpdateDestroyAPIView):
+class MusicDetail(GenericViewSet, 
+                mixins.ListModelMixin, mixins.DestroyModelMixin, mixins.RetrieveModelMixin, mixins.UpdateModelMixin):
     queryset = Music.objects.all()
     serializer_class = MusicSerializer
