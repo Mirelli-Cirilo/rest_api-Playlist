@@ -5,6 +5,9 @@ from rest_framework import viewsets, mixins, status
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework import filters
+
+
 class LoginViewSet(APIView):
     permission_classes = ()
 
@@ -24,14 +27,23 @@ class UserCreateViewSet(mixins.CreateModelMixin, GenericViewSet):
     serializer_class = UserSerializer
 
 class MusicViewSet(viewsets.ModelViewSet):
-    queryset = Music.objects.all()
+    
     serializer_class = MusicSerializer
+    
+    def get_queryset(self):       
+        user = self.request.user
+        return Music.objects.filter(user=user)
 
 class MusicDetail(GenericViewSet, 
                 mixins.ListModelMixin, 
                 mixins.DestroyModelMixin, 
                 mixins.RetrieveModelMixin, 
                 mixins.UpdateModelMixin):
-    queryset = Music.objects.all()
+    
     serializer_class = MusicSerializer
+    
+    def get_queryset(self):       
+        user = self.request.user
+        return Music.objects.filter(user=user)
+    
     

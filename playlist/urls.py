@@ -4,8 +4,8 @@ from rest_framework import routers
 from . import views
 
 router = routers.DefaultRouter()
-router.register(r'musics', views.MusicViewSet)
-router.register(r'music-detail', views.MusicDetail)
+router.register(r'musics', views.MusicViewSet, basename='musics-filter')
+router.register(r'music-detail', views.MusicDetail, basename='music-detail')
 router.register(r'user-create', views.UserCreateViewSet, basename='user')
 
 
